@@ -1,16 +1,15 @@
 import React, {useState} from "react";
 
 
-function Input( {runGuess, setGuess, guess} ) {
+function Input({ handleSubmitGuess }) {
+  
+  const [tentativeGuess, setTentativeGuess] = useState('')
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log({guess});
-    if (guess.length !== 5){
-      window.alert('You need to send exactly 5 characters!');
-      return;
-    }
-    setGuess('')
+    handleSubmitGuess(tentativeGuess)
+    console.log('this was your guess: ', tentativeGuess)
+    setTentativeGuess('')
   }
 
   return (
@@ -29,11 +28,11 @@ function Input( {runGuess, setGuess, guess} ) {
           pattern="[a-zA-Z]{5}"
           id="guess-input" 
           type="text"
-          value={guess}
+          value={tentativeGuess}
           onChange={
             (event) => {
               const nextGuess = event.target.value.toUpperCase();
-              setGuess(nextGuess);
+              setTentativeGuess(nextGuess);
             }
           }
         >
