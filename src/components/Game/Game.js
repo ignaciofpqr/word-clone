@@ -20,7 +20,7 @@ function Game() {
 
   return (
     <>
-      <GuessWrapper guesses={guesses} />
+      <GuessWrapper guesses={guesses} answer={answer} />
       <Input handleSubmitGuess={handleSubmiteGuess} />
     </>
   );
